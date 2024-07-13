@@ -142,6 +142,8 @@ class KafkaClient:
             data_gen = DataGenerator()
             items = data_gen.generate_items()
             len_sky = len([item for item in items if item.__class__.__name__ == "SkyoneData"])
+            # print(len_sky)
+            # print(f"{len_sky} items from sky one and {len(items) - len_sky} from sunset")
             logging.info(f"{len_sky} items from sky one and {len(items) - len_sky} from sunset")
             for item in items:
                 try:

@@ -1,9 +1,12 @@
 from kafka import KafkaConsumer
+import sys
+topic=sys.argv[1]  
 KAFKA_CONSUMER_GROUP_NAME_CONS = "test-consumer-group"
-KAFKA_TOPIC_NAME_CONS = "flightdata"
+KAFKA_TOPIC_NAME_CONS = topic #"flightdata"
 KAFKA_BOOTSTRAP_SERVERS_CONS = "localhost:29092"
 
 if __name__ == "__main__":
+    
     print("Kafka Consumer Application Started ... ")
     try:
         consumer = KafkaConsumer(

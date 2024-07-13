@@ -52,12 +52,13 @@ if __name__ == "__main__":
 
     env = StreamExecutionEnvironment.get_execution_environment()
     env.set_runtime_mode(RuntimeExecutionMode.STREAMING)
-    # env.set_parallelism(5)
+    env.set_parallelism(1)
+    
     if RUNTIME_ENV != "docker":
         CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
         jar_files = ["flink-sql-connector-kafka-1.17.1.jar"]
         jar_paths = tuple(
-            [f"file://{os.path.join(CURRENT_DIR, 'jars', name)}" for name in jar_files]
+            [f"file:///{os.path.join(CURRENT_DIR, 'jars', name)}" for name in jar_files]
         )
         logging.info(f"adding local jars - {', '.join(jar_files)}")
         env.add_jars(*jar_paths)
